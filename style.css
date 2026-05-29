@@ -1,11 +1,94 @@
+:root{
+    --blue: #179ff5;
+    --yellow: #eaed00;
+    --navy: #1a2744;
+    --sage: #9ab4c1;
+    --teal: #6AB4C1;
+    --lime: #cad463;
+    --white: #ffffff;
+    --black: #000000;
 
-    
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 8px;
-        text-align: left;
-    }
-    
+    --bg:var(--blue);
+    --bg-alt:var(--sage);
+    --bg-alt2:var(--teal)
+    --surface:var(--white);
+    --ink:var(--navy);
+    --ink-on-bg:var(--white);
+    --accent:var(--yellow);
+    --accent-dim:var(--yellow);
+    --shadow:var(--navy);
+    --text:var(--navy);
+    --text-muted: rgba(26, 39, 68, 0.7);
+}
+
+[data-theme="dark"] {
+    --bg: #0f1c2e;
+    --bg-alt: #162235;
+    --bg-alt2: #1a2744;
+    --surface: #1e2e47;
+    --ink: #e8f4fd;
+    --ink-on-bg: #e8f4fd;
+    --accent: #eaed00;
+    --accent-dim: #d4d700;
+    --shadow: rgba(0,0,0,0.8);
+    --text: #e8f4fd;
+    --text-muted: rgba(232,244,253,0.6)
+}
+
+html {scroll-behavior: smooth;}
+
+body {
+    font-family: 'Space Grostek', sans-serif;
+    background: vard(--bg);
+    color: var(--text);
+    overflow-x:hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+strong{font-weight: 900;}
+
+
+#boot-screen{
+    position: fixed;
+    inset: 0;
+    background: #0f1c2e;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+
+}
+
+#boot-screen.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.boot-inner {
+    font-family: 'Space Mono', monospace;
+    color: var(--yellow);
+    max-width: 480 px;
+    width: 90%;
+}
+
+.boot-line {
+    font-size: 1rem;
+    font-weight:700;
+    min-height: 1.4em;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.boot-line::after {
+    content: var(--blue);
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.boot-bar-wrap{
+    margin-top: 1.5rem;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid var(--yellow);
+}
