@@ -150,5 +150,13 @@ nav{
 
 .nav-links a:hover,
 .nav-links a.active {
+    backround: var(--accent);
+    border-color: var(--ink);
+    box-shadow: 3px 3px 0 var(--shadow);
+    color: var(--navy);
+}
+
+.theme-toggle {
+    background: var(--surface);
     
 }
