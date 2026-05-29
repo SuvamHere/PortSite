@@ -150,7 +150,7 @@ nav{
 
 .nav-links a:hover,
 .nav-links a.active {
-    backround: var(--accent);
+    background: var(--accent);
     border-color: var(--ink);
     box-shadow: 3px 3px 0 var(--shadow);
     color: var(--navy);
@@ -158,5 +158,38 @@ nav{
 
 .theme-toggle {
     background: var(--surface);
-    
+    border: 3px solid var(--ink);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease-linear;
+    font-family: 'Space Grotesk',sanns-serif;
 }
+
+.theme-toggle:hover {
+    background: var(--accent);
+    transform: translate(-1px,-1px);
+    box-shadow: 4px 4px 0 var(--shadow);
+}
+
+.theme-toggle:active {
+    transform: translate(2px,2px);
+    box-shadow:none;
+}
+
+.theme.icon {
+    font-size: 1.1rem;
+    color:var(--ink);
+    line-height: 1;
+}
+
+section {
+    border-bottom: 4px solid var(--ink);
+    transition: background 0.3 ease;
+}
+
+
