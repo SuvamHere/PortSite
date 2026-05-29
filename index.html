@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta> charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suvam Pathak</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,30 +9,49 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="boot-screen">
+      <div class="boot-inner">
+        <div class="boot-line" id="boot-line-1"></div>
+        <div class="boot-line" id="boot-line-2"></div>
+        <div class="boot-line" id="boot-line-3"></div>
+        <div class="boot-bar-wrap">
+          <div class="boot-bar" id="boot-bar"></div>
+        </div>
+        <div class="boot-pct" id="boot-pct">0%</div>
+      </div>
+    </div>
+
+    
     <nav>
       <div class="nav-logo">SUVAM</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
     </nav>
 
     <section id="hero">
       <div class="hero-grid-bg"></div>
-      <div class="hero-inner-content-z">
-        <div>
-          <div class="hero-tag">Eager to Learn</div>
-          <h1 class="hero-name">
-            <span class="stroke">Suvam</span>
-            <span class="solid">Pathak</span>
-          </h1>
-          <p class="hero-subtitle">
-            Grade 12 student from Nepal building software, hardware & robotics projects while leading communities through Robotics Club of Valmiki X Hack Club.
-            Eagerely passionate in Mathematics
-
-          </p>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag">// INITIALIZING PROFILE</div>
+        <h1 class="hero-headline">
+          <span class="stroke">BUILDING</span>
+          <span class="solid">LOUD</span>
+          <span class="stroke">THINGS.</span>
+        </h1>
+        <p class="hero-sub">
+          I'm <strong>Suvam Pathak</strong> — Grade 12, Nepal.
+          Software · Hardware · Robotics · CAD.
+          Secretary @ Robotics Club of Valmiki × Hack Club.
+        </p>
           <div class="hero-ctas">
             <a href="#projects" class="btn-primary">View Porjects</a>
             <a href="#about" class="btn-secondary">Get in Touch</a>
@@ -492,3 +511,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
