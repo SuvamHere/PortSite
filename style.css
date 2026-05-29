@@ -187,9 +187,33 @@ nav{
     line-height: 1;
 }
 
-section {
+section{
     border-bottom: 4px solid var(--ink);
-    transition: background 0.3 ease;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+.section-tag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--accent);
+    border: 3px solid var(--ink);
+    padding: 3px 12px;
+    font-weight: 900;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+}
+
+.section-title,
+.section-title {
+    font-size: clamp(2.2rem,5vw,3.8rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 2rem;
+    color: var(--ink-on-bg);
+
+}
 
