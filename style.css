@@ -260,6 +260,60 @@ section{
     background: var(--bg);
     position: relative;
     overflow: hidden;
-    
+    border-bottom: 4px solid var(--ink);
 }
 
+.hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle,rgba(255,255,255,0.1) 1.5px,transparent 1.5px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index:0;
+}
+
+[data-theme="dark"] .hero-grid-bg {
+    background-image: radial-gradient(circle,rgba(255,255,255,0.06) 1.5px,transparent 1.5 px);
+}
+
+.hero-inner {
+    position: relative;
+    z-index:1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    display: gird;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-left {display: flex; flex-direction:column; gap: 1.5rem;}
+
+.hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--lime);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .hero-tag {color:var(--teal);}
+
+.hero-headline {
+    font-size:clamp(3rem,7vw,5.5rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}
+
+.hero-headline .stroke{
+    -webkit-text-stroke: 3px var(--teal);
+}
+
+.hero-headline .solid {
+    
+}
