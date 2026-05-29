@@ -375,3 +375,20 @@ section{
     transform: rotate(1deg);
     background:var(--accent);
 }
+
+.card-label {
+    font-size: 0.62rem;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing: 0.18em;
+    color:var(--navy);
+    line-height: 1.2;
+}
+
+.card-sub {
+    font-size:0.75rem;
+    font-weight:700;
+    color:var(--navy);
+    opacity: 0.75;
+    margin-top: 0.2rem;
+}
