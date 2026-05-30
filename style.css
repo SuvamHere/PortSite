@@ -893,3 +893,27 @@ l
     color: rgba(255,255,255,0.35);
 }
 
+@media (max-width: 900px) {
+    .hero-inner {grid-template-columns: 1fr; padding:3rem 1.5rem;}
+    .hero-visual {display: none;}
+    .cotact-inner {grid-template-columns: 1fr;}
+    #about > div.about-inner {float:none; width: 100%; padding-right: 0;}
+    #about > div:not(.about-inner) { margin-left: 0; padding-top: 2rem; padding-bottom: 2rem;}
+}
+
+@media (max-width: 640px) {
+    nav {padding: 0.1rem;}
+    .nav-links {display: none;}
+    #projects {padding:3rem 1.25rem;}
+    #skills {padding: 3rem 1.25rem;}
+    #contact {padding: 3rem 1.25rem;}
+    #about {padding: 3rem 1.25;}
+    .btn-primary,
+    .btn-secondary {width:100%; text-align: center;}
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {animation:none; }
+    #boot-screen {display: none;}
+    html {scroll-behavior: auto;}
+}
