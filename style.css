@@ -819,3 +819,40 @@ l
     letter-spacing: 0.18em;
     color: var(--navy);
 }
+[data-theme="dark"] .form-label {color: var(--text-muted);}
+
+.form-imput,
+.form-textarea {
+    background:var(--white);
+    border: 4px solid var(--navy);
+    padding: 11px 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    outline: none;
+    color: var(--navy);
+    transition: all 0.1s ease-linear;
+    resize: vertical;
+
+}
+
+
+[data-theme="dark"] .form-imput,
+[data-theme="dark"] .form-textarea {
+    background:var(--bg-alt2);
+    border-color: var(--ink);
+    color: var(--text);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    background: var(--accent);
+    color: var(--navy);
+    box-shadow: 4px 4px 0 var(--navy);
+}
+
+.form-textarea {min-height:130px;}
+
+
+    
+
