@@ -3,12 +3,12 @@
 
 
 :root {
-  --blue:    #179FF5;
+  --blue:    #139ff6;
   --yellow:  #EAED00;
-  --navy:    #1A2744;
-  --sage:    #9AC492;
-  --teal:    #6AB4C1;
-  --lime:    #CAD463;
+  --navy:    #141f38;
+  --sage:    #06d6a0;
+  --teal:    #6fdaec;
+  --lime:    #dce763;
   --white:   #FFFFFF;
 
   --bg:         var(--blue);
