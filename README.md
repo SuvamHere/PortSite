@@ -6,11 +6,20 @@
 
 ### This website is of 5 sections
 
-## 1. [Hero](#-Hero)
-## 2. [About](#-About)
-## 3. [Skills](#-Skills)
-## 4. [Projects](#-Projects)
-## 5. [Contact](#-Contact)
+## 1.[Home](#-Home)
+<img width="1353" height="615" alt="image" src="mainpage.png" />
+
+## 2.[About](#-About)
+<img width="1345" height="611" alt="image" src="about.png" />
+
+## 3.[Skills](#-Skills)
+<img width="1350" height="615" alt="image" src="skills.png" />
+
+## 4.[Projects](#-Projects)
+<img width="1351" height="608" alt="image" src="projects0.png" />
+
+## 5.[Contact](#-Contact)
+<img width="1346" height="611" alt="image" src="contact.png" />
 
 -------------------------------
 
@@ -47,6 +56,7 @@
 ### A custom startup screen with a loading counter and progress animation before the website becomes visible.
 
 ## 2.Dark Mode
+<img width="1346" height="611" alt="image" src="dark.png" />
 ### Light and Dark themes can be switchedd instantly where the light mode is what is normally seen and in dark mode the color changes to darker shade of blue where minimalist design is there.
 
 ## 3.Scroll Animations
