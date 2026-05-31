@@ -1,51 +1,45 @@
 'use strict';
 
-const { createElement } = require("react");
-
 const BOOT_LINES = [
-    'INITALIZING SYSTEM...',
-    'PORTFOLIO is starting up...',
-    'Loading modules...',
-    'Loading skills...booting systems',
-    'Establishing secure connection...',
-    'System check complete.',
-    'Welcome to PORTFOLIO.'
+  'INITIALIZING...',
+  'PORTFOLIO v2.0 — SUVAM PATHAK',
+  'Loading skills... booting systems...',
 ];
 
-function typeWriter(el,text,speed,onDone) {
-    let i= 0;
-    el.textContent = '';
-    const timer = setInterval(()=> {
-        el.textContent += text[i++];
-        if(i>= text.length) {
-            clearInterval(timer);
-            if(onDone) onDone();
-        }
-    },speed); 
+function typeWriter(el, text, speed, onDone) {
+  let i = 0;
+  el.textContent = '';
+  const timer = setInterval(() => {
+    el.textContent += text[i++];
+    if (i >= text.length) {
+      clearInterval(timer);
+      if (onDone) onDone();
+    }
+  }, speed);
 }
 
 function runBootSequence() {
-    const screen = document.getElementById('boot-screen');
-    if (!screen) return;
+  const screen = document.getElementById('boot-screen');
+  if (!screen) return;
 
-    const l1 = document.getElementById('boot-line-1');
-    const l2 = document.getElementById('boot-line-2');
-    const l3 = document.getElementById('boot-line-3');
-    const bar = document.getElementById('boot-bar');
-    const pct = document.getElementById('boot-pct');
+  const l1  = document.getElementById('boot-line-1');
+  const l2  = document.getElementById('boot-line-2');
+  const l3  = document.getElementById('boot-line-3');
+  const bar = document.getElementById('boot-bar');
+  const pct = document.getElementById('boot-pct');
 
-    if (!l1 || !l2 || !l3 || !bar || !pct) return;
+  if (!l1 || !l2 || !l3 || !bar || !pct) return;
 
-    let progress = 0;
-    const barTimer = setInterval(() => {
-        progress +=1.5;
-        if (progrss >= 100) progress = 100;
-        bar.style.width = progress + '%';
-        pct.textContent = Math.floor(progrss) + '%';
-        if (progress >= 100) clearInterval(barTimer);
-    }, 25);
+  let progress = 0;
+  const barTimer = setInterval(() => {
+    progress += 1.5;
+    if (progress > 100) progress = 100;
+    bar.style.width  = progress + '%';
+    pct.textContent  = Math.floor(progress) + '%';
+    if (progress >= 100) clearInterval(barTimer);
+  }, 25);
 
-typeWriter(l1, BOOT_LINES[0], 45, () => {
+  typeWriter(l1, BOOT_LINES[0], 45, () => {
     setTimeout(() => {
       typeWriter(l2, BOOT_LINES[1], 35, () => {
         setTimeout(() => {
@@ -61,10 +55,9 @@ typeWriter(l1, BOOT_LINES[0], 45, () => {
   });
 }
 
- 
 function initCursor() {
   if (window.matchMedia('(hover: none)').matches) return;
- 
+
   const dot = document.createElement('div');
   dot.id = 'cursor-dot';
   Object.assign(dot.style, {
@@ -82,25 +75,25 @@ function initCursor() {
     transition:    'width 0.15s ease, height 0.15s ease, background 0.2s ease',
     willChange:    'top, left',
   });
-    document.body.appendChild(dot);
-    
-    let mx= 0, my = 0, dx = 0, dy = 0;
+  document.body.appendChild(dot);
 
-    document.addEventListener('mousemove', e => {
-        mx=e.clientX;
-        my=e.clientY;
-    });
+  let mx = 0, my = 0, dx = 0, dy = 0;
 
-    function loop() {
-        dx += (mx-dx) * 0.18;
-        dy += (my-dy) * 0.18;
-        dot.style.left = dx + 'px';
-        dot.style.top = dy+ 'px';
-        requestAnimationFrame(loop);
-    }
-    loop();
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+  });
 
-     document.querySelectorAll('a, button, .project-card, .contact-link').forEach((el) => {
+  function loop() {
+    dx += (mx - dx) * 0.18;
+    dy += (my - dy) * 0.18;
+    dot.style.left = dx + 'px';
+    dot.style.top  = dy + 'px';
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  document.querySelectorAll('a, button, .project-card, .contact-link').forEach((el) => {
     el.addEventListener('mouseenter', () => {
       dot.style.width      = '18px';
       dot.style.height     = '18px';
@@ -112,34 +105,35 @@ function initCursor() {
       dot.style.background = '#EAED00';
     });
   });
-    
-  document.body.style.cursor ='none';
-  document.querySelectorAll('a,button,InputDeviceInfo,textarea').forEach((el) => {
-    el.style.cursor ='none';
+
+  document.body.style.cursor = 'none';
+  document.querySelectorAll('a, button, input, textarea').forEach((el) => {
+    el.style.cursor = 'none';
   });
 }
 
-const html = document.documentElement;
+const html        = document.documentElement;
 const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = themeToggle ? themeToggle.querySelector('theme-icon') : null;
+const themeIcon   = themeToggle ? themeToggle.querySelector('.theme-icon') : null;
 
 function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    localStorage.setItem('sp-theme', theme);
-    if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+  html.setAttribute('data-theme', theme);
+  localStorage.setItem('sp-theme', theme);
+  if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 
 function initTheme() {
-    const saved = localStorage.getItem('Suvam-theme') || 'light';
-    applyTheme(saved);
+  const saved = localStorage.getItem('sp-theme') || 'light';
+  applyTheme(saved);
 }
 
 if (themeToggle) {
-    themeToggle.addEventListener('click',() => {
-        const current = html.getAttribute('data-theme');
-        applyTheme(current === 'dark' ? 'light' : 'dark');
-    });
+  themeToggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
 }
+
 function initScrollFade() {
   const style = document.createElement('style');
   style.textContent = `
@@ -154,17 +148,17 @@ function initScrollFade() {
     }
   `;
   document.head.appendChild(style);
- 
+
   const targets = document.querySelectorAll(
     'section, .project-card, .skills-category, .skill-category, ' +
     '.about-text, .highlight-box, .hero-card, .contact-link, .stat-box'
   );
- 
+
   targets.forEach((el, i) => {
     el.classList.add('fade-in');
     el.style.transitionDelay = (i % 4) * 80 + 'ms';
   });
- 
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -175,14 +169,14 @@ function initScrollFade() {
   }, { threshold: 0.12 });
 
   targets.forEach((el) => observer.observe(el));
-}  
+}
 
 function initActiveNav() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks  = document.querySelectorAll('.nav-links a');
- 
+
   if (!sections.length || !navLinks.length) return;
- 
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -196,93 +190,97 @@ function initActiveNav() {
     });
   }, { threshold: 0.4 });
 
-    sections.forEach((s) => observer.observe(s));
+  sections.forEach((s) => observer.observe(s));
 }
 
-function initNavShadow(){
-    const nav = document.querySelector('nav');
-    if (!nav) return;
+function initNavShadow() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
 
-    window.addEventListener('scroll', ()=> {
-        nav.style.boxShadow = window.scrollY > 60 ? '0 4px 0 0 var(--ink)' : 'none'; }, {passive:true});
-    }
-
-    function initMarquee() {
-        const track = document.getElementById('marquee');
-        if (!track) return;
-
-        track.addEventListener('mouseenter', ()=> {track.style.animationPlayState = 'paused';});
-        track.addEventListener('mouseleave', ()=> {track.style.animationPlayState = 'running';});
-    }
-
-    function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 60 ? '0 4px 0 0 var(--ink)' : 'none';
+  }, { passive: true });
 }
 
-    function shakeSendBtn() {
-        const btn = document.getElementById('send-btn');
-        if (!btn) return;
+function initMarquee() {
+  const track = document.getElementById('marquee');
+  if (!track) return;
 
-        const style = document.createELementById('style');
+  track.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
+  track.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
+}
 
-        style.textContent = `
-        @keyframes shake {
-        0%,100% { transform: translateX(0); }
-        20% {transform: translateX(-6px); }
-        40% {transform: translateX(6px); }
-        60% {transform: translateX(-4px); }
-        80% {transform: translateX(4px); }
-        }
-        `;
-        document.head.appendChild(style);
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
-        btn.style.animation ='shake 0.3s ease';
-        btn.addEventListener('animationend', () => { btn.style.animation = ""; }, {once:true});
+function shakeSendBtn() {
+  const btn = document.getElementById('send-btn');
+  if (!btn) return;
+
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%      { transform: translateX(-6px); }
+      40%      { transform: translateX(6px); }
+      60%      { transform: translateX(-4px); }
+      80%      { transform: translateX(4px); }
     }
+  `;
+  document.head.appendChild(style);
 
-    function showSuccess() {
-        const btn = document.getElementById('send-btn');
-        if(!btn) return;
+  btn.style.animation = 'shake 0.3s ease';
+  btn.addEventListener('animationend', () => { btn.style.animation = ''; }, { once: true });
+}
 
-        const original = btn.textContent;
-        btn.textContent = "Sent"
-        btn.style.background = "#9AC492";
+function showSuccess() {
+  const btn = document.getElementById('send-btn');
+  if (!btn) return;
 
-        setTimeout(() => {
-            btn.textContent = original;
-            btn.style.background = '';
-        }, 3000);
-    }
-    function handleSend() {
-        const nameE1 = document.getElementById('name');
-        const emailE1 = document.getElementById('email');
-        const messageE1 = document.getElementById('message');
+  const original = btn.textContent;
+  btn.textContent     = 'SENT ✓';
+  btn.style.background = '#9AC492';
 
-        if (!nameE1 || emailE1 || messageE1) return;
+  setTimeout(() => {
+    btn.textContent      = original;
+    btn.style.background = '';
+  }, 3000);
+}
 
-        const n= nameE1.ValueMax.trim();
-        const e= emailE1.value.trim();
-        const m= messageE1.value.trim();
+function handleSend() {
+  const nameEl    = document.getElementById('name');
+  const emailEl   = document.getElementById('email');
+  const messageEl = document.getElementById('message');
 
-        if(!n || !e || !m) {
-            shakeSendBtn(); 
-            alert('Please fill in the fields.');
-            return;
-        }
+  if (!nameEl || !emailEl || !messageEl) return;
 
-        if(!isValidEmail(e)) {
-            shakeSendBtn();
-            alert ('Please enter a valid emaol address.');
-            return;
-        }
-        showSuccess();
-        nameE1.value = emailE1.value = messageE1.value = "";
-    }
-    function initContactForm() {
-        const sendBtn= document.getElementById('send-btn');
-        if (!sendBtn) return;
-        sendBtn.addEventListener('click', handleSend);
-    }
+  const n = nameEl.value.trim();
+  const e = emailEl.value.trim();
+  const m = messageEl.value.trim();
+
+  if (!n || !e || !m) {
+    shakeSendBtn();
+    alert('Please fill in all fields.');
+    return;
+  }
+
+  if (!isValidEmail(e)) {
+    shakeSendBtn();
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  showSuccess();
+  nameEl.value = emailEl.value = messageEl.value = '';
+}
+
+function initContactForm() {
+  const sendBtn = document.getElementById('send-btn');
+  if (!sendBtn) return;
+  sendBtn.addEventListener('click', handleSend);
+}
+
 function initCardA11y() {
   document.querySelectorAll('.project-card').forEach((card) => {
     card.setAttribute('tabindex', '0');
@@ -296,30 +294,30 @@ function initCardA11y() {
     });
   });
 }
-    
-function initSmoothScroll() {
-    const navHeight = document.querySelector('nav')?. offsetHeight || 64;
 
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener('click',(e) => {
-            const target = document.querySelector(link.getAttribute('href'));
-            if (!target) return;
-            e.preventDefault();
-            const top= target.getBoundingClientRect().top + window.scrollY - navHeight;
-            window.scrollTo({top, behavior:'smooth'});
-        });
+function initSmoothScroll() {
+  const navHeight = document.querySelector('nav')?.offsetHeight || 64;
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top, behavior: 'smooth' });
     });
+  });
 }
 
-document.addEventListener ('DOMContentLoaded', () => {
-    initTHeme();
-    runBootSequence();
-    initCursor();
-    initScrollFade();
-    initActiveNav();
-    initNavShadow();
-    initMarquee();
-    initContactForm();
-    initCardA11y();
-    initSmoothScroll();
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  runBootSequence();
+  initCursor();
+  initScrollFade();
+  initActiveNav();
+  initNavShadow();
+  initMarquee();
+  initContactForm();
+  initCardA11y();
+  initSmoothScroll();
 });
