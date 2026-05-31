@@ -301,10 +301,26 @@ function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
       const target = document.querySelector(link.getAttribute('href'));
+
       if (!target) return;
+
       e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
-      window.scrollTo({ top, behavior: 'smooth' });
+
+      const top =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        navHeight;
+
+      if (window.lenis) {
+        window.lenis.scrollTo(top, {
+          duration: 1.2,
+        });
+      } else {
+        window.scrollTo({
+          top,
+          behavior: 'smooth',
+        });
+      }
     });
   });
 }
