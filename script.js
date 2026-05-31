@@ -216,8 +216,9 @@ function initNavShadow(){
     }
 
     function isValidEmail(email) {
-        return /^/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
     function shakeSendBtn() {
         const btn = document.getElementById('send-btn');
         if (!btn) return;
@@ -282,8 +283,30 @@ function initNavShadow(){
         if (!sendBtn) return;
         sendBtn.addEventListener('click', handleSend);
     }
-
+function initCardA11y() {
+  document.querySelectorAll('.project-card').forEach((card) => {
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('focus', () => {
+      card.style.transform = 'translateY(-6px)';
+      card.style.boxShadow = '14px 16px 0 var(--shadow)';
+    });
+    card.addEventListener('blur', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
+}
     
+function initSmoothScroll() {
+    const navHeight = document.querySelector('nav')?. offsetHeight || 64;
 
-
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click',(e) => {
+            const target = document.querySelector(link.getAttribute('href'));
+            if (!target) return;
+            e.preventDefault();
+            const top= target.getBoundingClientRect().top + window.scrollY - navHeight;
+            window.scrollTo({top, behavior:'smooth'});
+        });
+    });
 }
