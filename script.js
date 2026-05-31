@@ -238,6 +238,52 @@ function initNavShadow(){
         btn.style.animation ='shake 0.3s ease';
         btn.addEventListener('animationend', () => { btn.style.animation = ""; }, {once:true});
     }
+
+    function showSuccess() {
+        const btn = document.getElementById('send-btn');
+        if(!btn) return;
+
+        const original = btn.textContent;
+        btn.textContent = "Sent"
+        btn.style.background = "#9AC492";
+
+        setTimeout(() => {
+            btn.textContent = original;
+            btn.style.background = '';
+        }, 3000);
+    }
+    function handleSend() {
+        const nameE1 = document.getElementById('name');
+        const emailE1 = document.getElementById('email');
+        const messageE1 = document.getElementById('message');
+
+        if (!nameE1 || emailE1 || messageE1) return;
+
+        const n= nameE1.ValueMax.trim();
+        const e= emailE1.value.trim();
+        const m= messageE1.value.trim();
+
+        if(!n || !e || !m) {
+            shakeSendBtn(); 
+            alert('Please fill in the fields.');
+            return;
+        }
+
+        if(!isValidEmail(e)) {
+            shakeSendBtn();
+            alert ('Please enter a valid emaol address.');
+            return;
+        }
+        showSuccess();
+        nameE1.value = emailE1.value = messageE1.value = "";
+    }
+    function initContactForm() {
+        const sendBtn= document.getElementById('send-btn');
+        if (!sendBtn) return;
+        sendBtn.addEventListener('click', handleSend);
+    }
+
     
+
 
 }
