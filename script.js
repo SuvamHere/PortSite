@@ -1,5 +1,7 @@
 'use strict';
 
+const { createElement } = require("react");
+
 const BOOT_LINES = [
     'INITALIZING SYSTEM...',
     'PORTFOLIO is starting up...',
@@ -128,7 +130,7 @@ function applyTheme(theme) {
 }
 
 function initTheme() {
-    const saved = localStorage.getItem('Suvam-theme'); || 'light';
+    const saved = localStorage.getItem('Suvam-theme') || 'light';
     applyTheme(saved);
 }
 
@@ -138,3 +140,39 @@ if (themeToggle) {
         applyTheme(current === 'dark' ? 'light' : 'dark');
     });
 }
+function initScrollFade() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  `;
+  document.head.appendChild(style);
+ 
+  const targets = document.querySelectorAll(
+    'section, .project-card, .skills-category, .skill-category, ' +
+    '.about-text, .highlight-box, .hero-card, .contact-link, .stat-box'
+  );
+ 
+  targets.forEach((el, i) => {
+    el.classList.add('fade-in');
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+  });
+ 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach((el) => observer.observe(el));
+}  
