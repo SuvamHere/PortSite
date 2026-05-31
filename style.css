@@ -40,8 +40,16 @@
 }
 
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }
 
+html,body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar{
+  display:none;
+}
 body {
   font-family: 'Space Grotesk', sans-serif;
   background: var(--bg);
@@ -99,7 +107,7 @@ strong { font-weight: 900; }
 
 .boot-line::after {
   content: '█';
-  animation: blink 0.667s step-end infinite;
+  animation: blink 0.7s step-end infinite;
 }
 
 @keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0 } }
@@ -115,7 +123,7 @@ strong { font-weight: 900; }
   height: 100%;
   background: var(--yellow);
   width: 0%;
-  transition: width 0.1s linear;
+  transition: width 0.5s linear;
 }
 
 .boot-pct {
@@ -262,12 +270,13 @@ ection-title + typo variant section-ttile */
   letter-spacing: 0.08em;
   cursor: pointer;
   box-shadow: 5px 5px 0 var(--shadow);
-  transition: all 0.1s ease-linear;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s cubic-bezier(0.34,1.56,0.64,1), background 0.15s ease;
   text-decoration: none;
   display: inline-block;
 }
-.btn-primary:hover  { background: var(--accent-dim); }
-.btn-primary:active { transform: translate(3px, 3px); box-shadow: none; }
+.btn-primary:hover  { background: var(--accent-dim); transform: translate(-2px,-3px); box-shadow: 8px 8px 0 var(--shadow);
+}
+.btn-primary:active { transform: translate(4px, 4px); box-shadow: none; transition:transform 0.08s ease, box-shadow 0.08s ease; }
 
 .btn-secondary {
   background: var(--surface);
@@ -281,7 +290,9 @@ ection-title + typo variant section-ttile */
   letter-spacing: 0.08em;
   cursor: pointer;
   box-shadow: 5px 5px 0 var(--shadow);
-  transition: all 0.1s ease-linear;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.18s cubic-bezier(0.34,1.56,0.64,1),
+              background 0.15s ease;
   text-decoration: none;
   display: inline-block;
 }
@@ -935,14 +946,14 @@ ection-title + typo variant section-ttile */
   font-weight: 700;
   outline: none;
   color: var(--navy);
-  transition: all 0.1s ease-linear;
+  transition: transform 0.2s ease cubic-bezier(0.34, 1.56, 0.64,1); box-shadow: 0.2s cubic-bezier(0.34,1.56,0.64,1); background: 0.15s ease; 
   resize: vertical;
 }
 
 [data-theme="dark"] .form-input,
 [data-theme="dark"] .form-textarea {
   background: var(--bg-alt2);
-  border-color: var(--ink);
+  border-color: var(--teal);
   color: var(--text);
 }
 
@@ -950,7 +961,8 @@ ection-title + typo variant section-ttile */
 .form-textarea:focus {
   background: var(--accent);
   color: var(--navy);
-  box-shadow: 4px 4px 0 var(--navy);
+  transform: translate(-2px,-2px);
+  box-shadow: 6px 6px 0 var(--teal);
 }
 
 .form-textarea { min-height: 130px; }
