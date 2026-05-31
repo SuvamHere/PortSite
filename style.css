@@ -56,12 +56,25 @@ strong { font-weight: 900; }
 #boot-screen {
   position: fixed;
   inset: 0;
-  background: #0F1C2E;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.5s ease;
+  overflow: hidden;
+}
+
+#boot-screen::before {
+  content: "";
+  position: absolute;
+  inset: -30px;
+
+  background-image: url("title-card.png");
+  background-size: cover;
+  background-position: center;
+
+  filter: blur(20px);
+  transform: scale(1.1);
+  z-index: -1;
 }
 
 #boot-screen.hide {
@@ -70,7 +83,7 @@ strong { font-weight: 900; }
 }
 
 .boot-inner {
-  font-family: 'Space Mono', monospace;
+  font-family:  "Trebuchet MS", Helvetica, sans-serif;
   color: var(--yellow);
   max-width: 480px;
   width: 90%;
@@ -86,7 +99,7 @@ strong { font-weight: 900; }
 
 .boot-line::after {
   content: '█';
-  animation: blink 0.7s step-end infinite;
+  animation: blink 0.667s step-end infinite;
 }
 
 @keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0 } }
@@ -311,7 +324,7 @@ ection-title + typo variant section-ttile */
 }
 
 .hero-tag {
-    font-family: 'Space Mono', monospace;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: -.78rem;
     font-weight: 700;
     color: var(--lime);

@@ -1,9 +1,9 @@
 'use strict';
 
 const BOOT_LINES = [
-  'INITIALIZING...',
-  'PORTFOLIO v2.0 — SUVAM PATHAK',
-  'Loading skills... booting systems...',
+  'INITIALIZING INSIDE THE BRAIN',
+  'LOADING SKILLS & BOOTING...',
+  'PORTFOLIO V1.0 — SUVAM PATHAK',
 ];
 
 function typeWriter(el, text, speed, onDone) {
