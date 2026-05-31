@@ -1,7 +1,23 @@
-# Personal website
-### It is a personal website made specifically for those who want to find some information about me or what im capable of and what I can and cannot do. As I had a domain unused and lacking a portfolio website I decided to start making this website and learn as I go.
+**PortSite**
 
-Myself Suvam Pathak , and this is my own Portfolio website. In this world of AI, I wanted to learn the basics and make something myself. I have coded everything myself and used AI for debugging.
-This is my first ever portfolio site so I don't have very high hopes for it.
-## I am just using HTML5,CSS and JS for this project ##
-## And yeah, I am doing it for horizon ##
+# Suvam Pathak- Portfolio
+
+### A personal website built to showcase who I am, What have I done, and What are my interests. I started this project because I wanted a place to display my projects, skills, and experiences while learning web development by building something real and impactful.This project's color palette is inspired by an animated series called 'Invincible'.
+
+### This website is of 5 sections
+
+## 1. [Hero](#-Hero)
+## 2. [About](#-About)
+## 3. [Skills](#-Skills)
+## 4. [Projects](#-Projects)
+## 5. [Contact](#-Contact)
+
+-------------------------------
+
+# Hero 
+
+### The first thing users see is a boot screen which is inspired by old terminal startup sequences. A loading counter,progress bar, and animated elements play before revealing the main home page. The hero section introduces who I am and highlights some of the clubs I'm involved with.
+
+# About
+
+### 
