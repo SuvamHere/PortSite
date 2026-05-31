@@ -310,3 +310,16 @@ function initSmoothScroll() {
         });
     });
 }
+
+document.addEventListener ('DOMContentLoaded', () => {
+    initTHeme();
+    runBootSequence();
+    initCursor();
+    initScrollFade();
+    initActiveNav();
+    initNavShadow();
+    initMarquee();
+    initContactForm();
+    initCardA11y();
+    initSmoothScroll();
+});
