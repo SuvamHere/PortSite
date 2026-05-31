@@ -309,6 +309,26 @@ function initSmoothScroll() {
   });
 }
 
+function initLenis () {
+  const script = document.createElement('script');
+  script.src = 'https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js';
+  script.onload = () => {
+    lenis = new Lenis ({
+      duration: 1.2,
+      easing: (t) => Math.min(1,1.001 - Math.pow(2,-10 * t)),
+      smooth: true,
+    });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  };
+  document.head.appendChild(script);
+}
+
+let lenis = null;
+
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   runBootSequence();
