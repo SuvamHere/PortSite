@@ -59,7 +59,82 @@ typeWriter(l1, BOOT_LINES[0], 45, () => {
   });
 }
 
+ 
 function initCursor() {
-    if {window.matchMedia('hover:none').matches) return;
+  if (window.matchMedia('(hover: none)').matches) return;
+ 
+  const dot = document.createElement('div');
+  dot.id = 'cursor-dot';
+  Object.assign(dot.style, {
+    position:      'fixed',
+    top:           '0',
+    left:          '0',
+    width:         '10px',
+    height:        '10px',
+    background:    '#EAED00',
+    border:        '2px solid #1A2744',
+    borderRadius:  '50%',
+    pointerEvents: 'none',
+    zIndex:        '99999',
+    transform:     'translate(-50%, -50%)',
+    transition:    'width 0.15s ease, height 0.15s ease, background 0.2s ease',
+    willChange:    'top, left',
+  });
+    document.body.appendChild(dot);
+    
+    let mx= 0, my = 0, dx = 0, dy = 0;
 
-})
+    document.addEventListener('mousemove', e => {
+        mx=e.clientX;
+        my=e.clientY;
+    });
+
+    function loop() {
+        dx += (mx-dx) * 0.18;
+        dy += (my-dy) * 0.18;
+        dot.style.left = dx + 'px';
+        dot.style.top = dy+ 'px';
+        requestAnimationFrame(loop);
+    }
+    loop();
+
+     document.querySelectorAll('a, button, .project-card, .contact-link').forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      dot.style.width      = '18px';
+      dot.style.height     = '18px';
+      dot.style.background = '#179FF5';
+    });
+    el.addEventListener('mouseleave', () => {
+      dot.style.width      = '10px';
+      dot.style.height     = '10px';
+      dot.style.background = '#EAED00';
+    });
+  });
+    
+  document.body.style.cursor ='none';
+  document.querySelectorAll('a,button,InputDeviceInfo,textarea').forEach((el) => {
+    el.style.cursor ='none';
+  });
+}
+
+const html = document.documentElement;
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle ? themeToggle.querySelector('theme-icon') : null;
+
+function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('sp-theme', theme);
+    if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+function initTheme() {
+    const saved = localStorage.getItem('Suvam-theme'); || 'light';
+    applyTheme(saved);
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click',() => {
+        const current = html.getAttribute('data-theme');
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+}
